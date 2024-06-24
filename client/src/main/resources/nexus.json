@@ -1,0 +1,14 @@
+{
+  "modules": [
+    {
+      "authors": [
+        "Zyneon Studios",
+        "nerotvlive"
+      ],
+      "main": "com.zyneonstudios.star.StarModule",
+      "id": "zyneon-star-module",
+      "name": "Zyneon Star",
+      "version": "${project.version}"
+    }
+  ]
+}
