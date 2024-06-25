@@ -7,8 +7,9 @@ body {
 .content {
     background: var(--background);
     position: absolute;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
+    color: var(--foreground);
 
     * {
         border-radius: 16px;
@@ -20,6 +21,7 @@ body {
         background: var(--menu);
         backdrop-filter: blur(8px);
         position: fixed;
+        z-index: 9999;
         margin: 1rem;
         height: 4rem;
         overflow: hidden;
@@ -151,46 +153,106 @@ body {
         }
     }
 
+    .card {
+        transition: all 0.25s ease;
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        box-shadow: 0 0 0.4rem #00000075;
+    }
+
+    .card:hover {
+        box-shadow: 0 0 0.8rem #00000099;
+    }
+
     img {
         pointer-events: none !important;
         user-select: none !important;
+    }
+
+    a {
+        transition: all 0.25s ease;
+        color: var(--link);
+        text-decoration: none;
+        font-family: OpenSans-Regular, sans-serif;
+    }
+
+    a:hover {
+        color: var(--link2);
+        text-decoration: underline;
     }
 
     .flex {
         display: flex;
     }
 
+    .underline {
+        text-decoration: underline;
+    }
+
+    .line-through {
+        text-decoration: line-through;
+    }
+
+    .overline {
+        text-decoration: overline;
+    }
+
+    .error {
+        text-decoration: spelling-error;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
     .danger:hover {
         background: rgba(255, 58, 58, 0.50) !important;
     }
+
+    #footer {
+        position: absolute;
+        width: calc(100% - 2rem);
+        bottom: -4.5rem;
+        padding: 1rem;
+        height: 2.5rem;
+        color: #cfcfcf;
+        background: var(--background2);
+        border-radius: 0;
+
+        .copyright {
+            transition: all 0.25s ease;
+            width: calc(100% - 2rem);
+            bottom: 0;
+            position: absolute;
+            text-align: center;
+        }
+
+        .copyright:hover {
+            color: #aeaeae;
+        }
+    }
 }
 
-#footer {
-    position: absolute;
-    top: 100%; left: 0;
-    right: 0; padding: 1rem;
-    height: 2.5rem;
-    color: #cfcfcf;
+::-webkit-scrollbar {
+    width: 5px;
+}
 
-    .copyright {
-        transition: all 0.25s ease;
-        width: calc(100% - 2rem);
-        bottom: 0;
-        position: absolute;
-        text-align: center;
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
 
-        a {
-            transition: all 0.25s ease;
-            color: white;
-            text-decoration: none;
-        }
-    }
+::-webkit-scrollbar-thumb {
+    background: var(--foreground4);
+    border-radius: 3px;
+}
 
-    .copyright:hover {
-        color: #aeaeae;
-
-        a:hover {
-            color: #becbff;
-        }
-    }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground);
+    cursor: grab;
 }

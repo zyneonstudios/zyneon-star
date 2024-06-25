@@ -3,7 +3,12 @@
     --background2: #000000;
     --foreground: #eaeaea;
     --foreground2: #c8c8c8;
-    --foreground3: #fffffff;
+    --foreground3: #ffffff;
+    --foreground4: #8f8f8f50;
     --menu: #00000099;
     --menu2: #000000;
+
+    --card: #080815;
+    --link: #ffffff;
+    --link2: #9cabff;
 }

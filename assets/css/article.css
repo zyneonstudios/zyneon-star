@@ -1,0 +1,63 @@
+.content {
+    #header {
+        height: calc(var(--viewport-height) / 1.5);
+        background: linear-gradient(to top, var(--background), transparent), url("../images/pictures-rebirth-planet.png") no-repeat;
+        background-size: cover;
+        border-radius: 0;
+        position: relative;
+        padding: 6rem 1rem 1rem 1rem;
+    }
+
+    #article {
+        position: relative;
+        height: fit-content;
+        left: 10%;
+        width: calc(80% - 2rem);
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: OpenSans-ExtraBold, sans-serif;
+            padding-bottom: 0.5rem;
+            font-size: 2.25rem;
+        }
+
+        h2, h3 {
+            font-family: OpenSans-Bold, sans-serif;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4, h5, h6 {
+            font-family: OpenSans-Semibold, sans-serif;
+            padding-bottom: 0.25rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        h5 {
+            font-size: 1.25rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        p {
+            font-family: OpenSans-Regular, sans-serif;
+            font-size: 1rem;
+        }
+    }
+}
