@@ -1,0 +1,196 @@
+body {
+    background: var(--background2);
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    background: var(--background);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    * {
+        border-radius: 16px;
+        color: var(--foreground);
+    }
+
+    #menu {
+        transition: all 0.25s ease;
+        background: var(--menu);
+        backdrop-filter: blur(8px);
+        position: fixed;
+        margin: 1rem;
+        height: 4rem;
+        overflow: hidden;
+        user-select: none;
+        left: 10%; right: 10%;
+        box-shadow: 0 0 0.4rem #00000099;
+
+        .title {
+            width: fit-content;
+
+            .image {
+                img {
+                    height: 3rem;
+                    margin: 0.5rem;
+                }
+            }
+
+            .text {
+                h3 {
+                    top: -0.85rem;
+                    position: absolute;
+                    font-size: 1.75rem;
+                }
+
+                h3:hover {
+                    transition: all 0.25s ease;
+                }
+            }
+        }
+
+        i#menu-toggle {
+            display: none;
+
+            position: absolute;
+            top: 0; right: 0;
+
+            margin: 0.3rem 0.25rem 0.25rem 0.25rem;
+            padding: 0.625rem 0.75rem 0.625rem 0.8rem;
+
+            font-size: 2rem;
+            transition: all 0.25s ease;
+        }
+
+        i#menu-toggle:hover {
+            background: var(--menu2);
+            cursor: pointer;
+        }
+
+        .entries {
+            position: absolute;
+            top: 0; right: 0;
+            height: 4rem;
+            width: calc(100% - 15rem);
+            overflow: hidden;
+
+            #menu-entries {
+                position: absolute;
+                top: 0; right: 0;
+                height: 4rem;
+
+                .entry {
+                    height: 3.5rem;
+                    overflow: hidden;
+                    margin: 0.25rem 0.25rem 0.25rem 0;
+
+                    i {
+                        padding: 1rem 0.25rem 1rem 0.8rem;
+                        font-size: 1.5rem;
+                    }
+
+                    h3 {
+                        position: relative;
+                        top: -0.3rem;
+                        padding: 0 1rem 0 0;
+                        font-size: 1.25rem;
+                        font-family: OpenSans-Regular, sans-serif;
+                    }
+                }
+
+                .entry:hover {
+                    background: var(--menu2);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    #menu.active {
+        border-radius: 0;
+        margin: 0;
+        right: 0;
+        left: 0;
+        overflow: unset;
+
+        i#menu-toggle {
+            display: inherit;
+        }
+
+        i#menu-toggle.active {
+            display: none;
+        }
+
+        .entries {
+            height: calc(var(--viewport-height) - 4rem);
+            position: absolute;
+            top: 4rem; right: 0;
+            width: fit-content;
+            overflow: hidden;
+            overflow-y: auto;
+            border-radius: 0;
+
+            #menu-entries {
+                flex-direction: column;
+                height: fit-content;
+                display: none;
+                position: relative;
+                background: var(--menu);
+                border-radius: 0;
+                width: 15rem;
+
+                .entry {
+                    margin-left: 0.25rem;
+                }
+            }
+
+            #menu-entries.active {
+                display: flex;
+            }
+        }
+    }
+
+    img {
+        pointer-events: none !important;
+        user-select: none !important;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .danger:hover {
+        background: rgba(255, 58, 58, 0.50) !important;
+    }
+}
+
+#footer {
+    position: absolute;
+    top: 100%; left: 0;
+    right: 0; padding: 1rem;
+    height: 2.5rem;
+    color: #cfcfcf;
+
+    .copyright {
+        transition: all 0.25s ease;
+        width: calc(100% - 2rem);
+        bottom: 0;
+        position: absolute;
+        text-align: center;
+
+        a {
+            transition: all 0.25s ease;
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    .copyright:hover {
+        color: #aeaeae;
+
+        a:hover {
+            color: #becbff;
+        }
+    }
+}
