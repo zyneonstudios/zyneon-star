@@ -22,13 +22,14 @@ body {
         border-radius: 1rem;
 
         .CodeMirror {
+            font-family: OpenSans-Regular, sans-serif;
             cursor: text;
             top: 3.025rem;
             border: none;
             height: calc(100% - 6.4rem);
             border-radius: 0 !important;
             background: var(--background3);
-            color: var(--foreground);
+            color: var(--highlight);
             border-top: 1px solid var(--background2);
             border-bottom: 1px solid var(--background2);
         }

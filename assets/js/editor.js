@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             element: document.getElementById("editor_"+id),
             forceSync: true,
-            hideIcons: [],
+            hideIcons: [
+                "guide"
+            ],
             indentWithTabs: true,
             tabSize: 4,
             spellChecker: false
