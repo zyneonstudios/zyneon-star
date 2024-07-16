@@ -23,6 +23,8 @@
                         localStorage.setItem("options.app","true");
                         console.log("[CONNECTOR] star.init");
                         return;
+                    } else if(urlParams.get("app")==="continue") {
+                        redirect();
                     }
                 }
                 if(urlParams.has("_ijt")&&urlParams.has("_ij_reload")) {

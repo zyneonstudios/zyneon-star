@@ -58,7 +58,7 @@ public class StarConnector extends ModuleConnector {
             }
             frame.openCustomPage("Star", "zyneon-star_start", StarStorage.starUrlBase+"?app=true&theme=" + dark);
         } else if(request.equals("init")) {
-            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
+            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted'); document.getElementById('iframe').src = '"+StarStorage.starUrlBase+"?app=continue"+"';");
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarRequest \""+request+"\"...");
         }
