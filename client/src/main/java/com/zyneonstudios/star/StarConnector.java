@@ -8,6 +8,9 @@ import com.zyneonstudios.application.modules.ModuleConnector;
 
 import java.awt.*;
 import java.net.URI;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class StarConnector extends ModuleConnector {
 
@@ -88,7 +91,8 @@ public class StarConnector extends ModuleConnector {
                         dark = true;
                     }
                 }
-                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&back=reload&theme="+dark);
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&back=reload");
+                System.out.println(URLEncoder.encode("id=settings&back=reload", StandardCharsets.UTF_8));
             }
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
