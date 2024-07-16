@@ -54,7 +54,7 @@ function initEditor() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    if(urlParams.has("back")) {
+    if(urlParams.get("back")) {
         back = urlParams.get("back");
         if(back==="reload") {
             back = location.href;
