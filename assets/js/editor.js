@@ -53,25 +53,33 @@ function initEditor() {
     }
 }
 
+function replaceBack() {
+    back = location.href;
+    if(back.includes("?")) {
+        back = back + "&id="+id;
+    } else {
+        back = back + "?id="+id;
+    }
+    const a = document.querySelector("#exit").querySelector("a");
+    a.innerHTML = "<i class='bx bx-refresh'></i>";
+    if(a.classList.contains("red")) {
+        a.classList.remove("red");
+    }
+    if(!a.classList.contains("blue")) {
+        a.classList.add("blue");
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    if(urlParams.get("back")) {
+
+    if(urlParams.get("back")!=null) {
         back = urlParams.get("back");
         if(back==="reload") {
-            back = location.href;
-            if(back.includes("?")) {
-                back = back + "&id="+id;
-            } else {
-                back = back + "?id="+id;
-            }
-            const a = document.querySelector("#exit").querySelector("a");
-            a.innerHTML = "<i class='bx bx-refresh'></i>";
-            if(a.classList.contains("red")) {
-                a.classList.remove("red");
-            }
-            if(!a.classList.contains("blue")) {
-                a.classList.add("blue");
-            }
+            replaceBack();
         }
+    }
+    if(isApp()) {
+        replaceBack();
     }
 
     setInterval(function() {
