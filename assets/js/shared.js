@@ -59,9 +59,9 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', che
 window.addEventListener('resize', checkWindowSize);
 
 document.addEventListener('DOMContentLoaded', function() {
+    checkTheme();
     mobile = isMobileDevice();
     checkWindowSize();
-    checkTheme();
 });
 
 document.addEventListener('contextmenu', function(event) {

@@ -11,8 +11,9 @@
     #article {
         position: relative;
         height: fit-content;
-        left: 10%;
-        width: calc(80% - 2rem);
+        left: 15%;
+        margin: 4rem 0;
+        width: calc(70% - 2rem);
 
         * {
             padding: 0;
