@@ -8,8 +8,10 @@
         <link rel="stylesheet" href="../assets/css/fonts.css">
         <link rel="stylesheet" id="css-colors">
         <script src="../assets/js/shared.js"></script>
+        <script src="../assets/js/article.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script type="module" src="https://md-block.verou.me/md-block.js"></script>
         <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" sizes="16x16">
     </head>
     <body>
@@ -35,19 +37,31 @@
             </div>
             <div id="header">
                 <div class="center">
+                    <h1 id="article-title">Loading title <i class='bx bx-loader-alt bx-spin'></i></h1>
+                    <h6><span class="by">by</span> <span class="bold" id="article-author">Loading author<i class='bx bx-loader-alt bx-spin'></i></span> <span class="published">published on</span> <span class="bold" id="article-published">Loading date_published<i class='bx bx-loader-alt bx-spin'></i></span></h6>
 
+                    <div id="article-buttons" class="flex">
+                        <h6><a class="button" href=".."><i class='bx bx-left-arrow-alt'></i><span class="back">Back</span></a></h6>
+                    </div>
                 </div>
             </div>
             <div class="card" id="article">
-
+                <md-block id="article-markdown">
+                    ### Loading article <i class='bx bx-loader-alt bx-spin'></i>
+                </md-block>
             </div>
             <div id="footer">
                 <div class="copyright">
-                    <p class="extra-bold-italic" id="footer-text">
+                    <p id="footer-text">
                         <i class='bx bx-loader-circle bx-spin'></i> Loading footer...
                     </p>
                 </div>
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                init(); setArticleBackgroundUrl("https://i.ibb.co/DDM4D3g/2024.webp");
+            });
+        </script>
     </body>
 </html>

@@ -1,9 +1,30 @@
+let lang;
+
 function checkTheme() {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.getElementById("css-colors").href = "../assets/css/colors-dark.css";
+        setTheme(true);
         return;
     }
-    document.getElementById("css-colors").href = "../assets/css/colors-light.css";
+    setTheme(false);
+}
+
+function setTheme(newTheme) {
+    if(newTheme==="dark"||newTheme==="true"||newTheme===true) {
+        newTheme = "../assets/css/colors-dark.css";
+    } else if(newTheme==="light"||newTheme==="false"||newTheme===false||newTheme===null||newTheme===undefined) {
+        newTheme = "../assets/css/colors-light.css";
+    }
+    document.getElementById("css-colors").href = newTheme;
+}
+
+function toggleTheme() {
+    let theme = document.getElementById("css-colors").href;
+    if(theme.includes("-dark.css")) {
+        theme = theme.replaceAll("-dark.css","-light.css");
+    } else {
+        theme = theme.replaceAll("-light.css","-dark.css");
+    }
+    setTheme(theme)
 }
 
 let mobile = false;
@@ -58,7 +79,26 @@ function toggleMenu() {
 }
 
 function setFooter() {
-    let lang;
+    const footer = document.getElementById("footer-text");
+    if(footer) {
+        if (lang === "de") {
+            footer.innerHTML = "von <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Gehosted auf <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> und bereitgestellt durch CloudFlare Pages.<br>Lizensiert unter der <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme();'>Farbschema umschalten</a>.";
+            return;
+        }
+        footer.innerHTML = "by <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Hosted on <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> and provided by CloudFlare Pages.<br>Licensed under <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme();'>Toggle theme</a>.";
+    }
+}
+
+function generateUUIDv4() {
+    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
+    );
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkTheme);
+window.addEventListener('resize', checkWindowSize);
+
+document.addEventListener('DOMContentLoaded', function() {
     if(location.pathname.includes("/de/")) {
         lang = "de";
     } else if(location.pathname.includes("/en/")) {
@@ -74,26 +114,6 @@ function setFooter() {
             }
         }
     }
-    const footer = document.getElementById("footer-text");
-    if(footer) {
-        if (lang === "de") {
-            footer.innerHTML = "von <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Gehosted auf <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> und bereitgestellt durch CloudFlare Pages.<br>Lizensiert unter der <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>.";
-            return;
-        }
-        footer.innerHTML = "by <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Hosted on <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> and provided by CloudFlare Pages.<br>Licensed under <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>.";
-    }
-}
-
-function generateUUIDv4() {
-    return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
-        (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16)
-    );
-}
-
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkTheme);
-window.addEventListener('resize', checkWindowSize);
-
-document.addEventListener('DOMContentLoaded', function() {
     checkTheme(); setFooter();
     mobile = isMobileDevice();
     checkWindowSize();
