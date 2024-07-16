@@ -6,6 +6,9 @@ import com.zyneonstudios.application.main.NexusApplication;
 import com.zyneonstudios.application.modules.ApplicationModule;
 import com.zyneonstudios.application.modules.ModuleConnector;
 
+import java.awt.*;
+import java.net.URI;
+
 public class StarConnector extends ModuleConnector {
 
     private final ApplicationFrame frame;
@@ -37,6 +40,15 @@ public class StarConnector extends ModuleConnector {
             resolveToolRequest(request.replaceFirst("tools.",""));
         } else if(request.startsWith("tool.")) {
             resolveToolRequest(request.replaceFirst("tool.",""));
+        } else if(request.startsWith("browse.")) {
+            request = request.replaceFirst("browse.","");
+            if(Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().browse(new URI(request));
+                } catch (Exception e) {
+                    NexusApplication.getLogger().error("[STAR] (Connector) Couldn't open url \""+request+"\" in default browser: "+e.getMessage());
+                }
+            }
         } else if(request.equals("open")) {
             boolean dark = false;
             if (ApplicationConfig.theme != null) {
@@ -70,7 +82,7 @@ public class StarConnector extends ModuleConnector {
         if(request.startsWith("markdown-editor.")) {
             request = request.replaceFirst("markdown-editor.","");
             if(request.equals("open")) {
-                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://zyneonstudios.github.io/zyneon-star/templates/editor.html?back=reload&id=zyneon-star_tools-markdownEditor");
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://zyneonstudios.github.io/zyneon-star/templates/editor.html?back=reload&id=settings");
             }
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
