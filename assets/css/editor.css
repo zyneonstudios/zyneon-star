@@ -119,6 +119,30 @@ body {
             }
         }
 
+        .disabled-for-preview {
+            a {
+                opacity: 0.5;
+                background: var(--background3) !important;
+            }
+
+            a.no-disable {
+                opacity: 1;
+                background: unset !important;
+            }
+
+            a.no-disable:hover {
+                background: var(--highlight) !important;
+            }
+
+            a.active {
+                background: var(--accent) !important;
+            }
+
+            a.active:hover {
+                background: var(--accent) !important;
+            }
+        }
+
         .editor-toolbar.fullscreen {
             position: absolute;
             width: 100%;
