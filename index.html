@@ -15,6 +15,11 @@
                 const urlParams = new URLSearchParams(window.location.search);
                 if(urlParams.has("app")) {
                     if(urlParams.get("app")==="true") {
+                        if(urlParams.has("theme")) {
+                            const theme = urlParams.get("theme")+"";
+                            localStorage.setItem("options.theme",theme);
+                            setTheme(theme,true);
+                        }
                         localStorage.setItem("options.app","true");
                         console.log("[CONNECTOR] star.init");
                         return;
