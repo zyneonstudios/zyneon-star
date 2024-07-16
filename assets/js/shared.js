@@ -36,8 +36,10 @@ function checkWindowSize() {
                 menu.classList.add("active");
             }
         } else {
-            if (menu.classList.contains("active")) {
-                menu.classList.remove("active");
+            if(menu) {
+                if (menu.classList.contains("active")) {
+                    menu.classList.remove("active");
+                }
             }
         }
     }
@@ -55,11 +57,38 @@ function toggleMenu() {
     }
 }
 
+function setFooter() {
+    let lang;
+    if(location.pathname.includes("/de/")) {
+        lang = "de";
+    } else if(location.pathname.includes("/en/")) {
+        lang = "en";
+    } else {
+        lang = "en";
+        if(localStorage.getItem("settings.language")!=null) {
+            lang = localStorage.getItem("settings.language");
+        } else {
+            const browserLanguage = navigator.language || navigator.userLanguage;
+            if(browserLanguage.toLowerCase().startsWith("de")) {
+                lang = "de";
+            }
+        }
+    }
+    const footer = document.getElementById("footer-text");
+    if(footer) {
+        if (lang === "de") {
+            footer.innerHTML = "von <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Gehosted auf <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> und bereitgestellt durch CloudFlare Pages.<br>Lizensiert unter der <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>.";
+            return;
+        }
+        footer.innerHTML = "by <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Hosted on <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> and provided by CloudFlare Pages.<br>Licensed under <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>.";
+    }
+}
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkTheme);
 window.addEventListener('resize', checkWindowSize);
 
 document.addEventListener('DOMContentLoaded', function() {
-    checkTheme();
+    checkTheme(); setFooter();
     mobile = isMobileDevice();
     checkWindowSize();
 });

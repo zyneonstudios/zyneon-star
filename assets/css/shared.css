@@ -220,16 +220,20 @@ body {
         width: calc(100% - 2rem);
         bottom: -4.5rem;
         padding: 1rem;
-        height: 2.5rem;
+        height: 6rem;
         color: #cfcfcf;
         background: var(--background2);
         border-radius: 0;
 
         .copyright {
             transition: all 0.25s ease;
+            height: 100%;
             width: calc(100% - 2rem);
             bottom: 0;
             position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 

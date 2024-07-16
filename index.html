@@ -19,8 +19,12 @@
             }
 
             function redirect(goal) {
+                let urlParams = new URLSearchParams(window.location.search).toString();
+                if(urlParams) {
+                    urlParams = "?"+urlParams;
+                }
                 if(goal) {
-                    location.href = /*"/"+*/goal;
+                    location.href = /*"/"+*/goal+urlParams;
                     return;
                 }
                 let lang = "en";
@@ -32,10 +36,8 @@
                         lang = "de";
                     }
                 }
-                location.href = lang+"/";
+                location.href = lang+"/"+urlParams;
             }
-
-
         </script>
     </body>
 </html>
