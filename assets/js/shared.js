@@ -29,14 +29,20 @@ function setTheme(newTheme,save) {
     }
 }
 
-function toggleTheme() {
+function toggleTheme(save) {
     let theme = document.getElementById("css-colors").href;
     if(theme.includes("-dark.css")) {
         theme = theme.replaceAll("-dark.css","-light.css");
     } else {
         theme = theme.replaceAll("-light.css","-dark.css");
     }
-    setTheme(theme)
+    let saveTheme = false;
+    if(save) {
+        if(save===true) {
+            saveTheme = true;
+        }
+    }
+    setTheme(theme,saveTheme)
 }
 
 let mobile = false;
@@ -94,10 +100,10 @@ function setFooter() {
     const footer = document.getElementById("footer-text");
     if(footer) {
         if (lang === "de") {
-            footer.innerHTML = "von <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Gehosted auf <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> und bereitgestellt durch CloudFlare Pages.<br>Lizensiert unter der <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme();'>Farbschema umschalten</a>.";
+            footer.innerHTML = "von <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Gehosted auf <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> und bereitgestellt durch CloudFlare Pages.<br>Lizensiert unter der <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme(true);'>Farbschema umschalten</a>.";
             return;
         }
-        footer.innerHTML = "by <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Hosted on <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> and provided by CloudFlare Pages.<br>Licensed under <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme();'>Toggle theme</a>.";
+        footer.innerHTML = "by <a href=\"https://www.zyneonstudios.com\">Zyneon Studios</a>. Hosted on <a href=\"https://github.com/zyneonstudios/zyneon-star\" target=\"_blank\">GitHub</a> and provided by CloudFlare Pages.<br>Licensed under <a href=\"https://github.com/zyneonstudios/zyneon-star/blob/main/LICENSE.md\" target=\"_blank\">GNU General Public License v3.0</a>. <a onclick='toggleTheme(true);'>Toggle theme</a>.";
     }
 }
 
