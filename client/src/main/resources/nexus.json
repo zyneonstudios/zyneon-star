@@ -7,7 +7,7 @@
       ],
       "main": "com.zyneonstudios.star.StarModule",
       "id": "zyneon-star-module",
-      "name": "Zyneon Star",
+      "name": "Star",
       "version": "${project.version}"
     }
   ]

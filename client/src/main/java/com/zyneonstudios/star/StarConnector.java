@@ -15,6 +15,12 @@ public class StarConnector extends ModuleConnector {
 
     @Override
     public void resolveFrameRequest(String request) {
-
+        if(request.startsWith("sync.title.")) {
+            frame.executeJavaScript("addMenuEntry('zyneon-star','bx bx-star','Star','star.open');");
+        } else if(request.equals("init.zyneon-star")) {
+            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
+        } else if(request.equals("star.open")) {
+            frame.openCustomPage("Star","zyneon-star","https://star.zyneonstudios.com");
+        }
     }
 }

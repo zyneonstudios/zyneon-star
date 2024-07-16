@@ -130,3 +130,5 @@ document.addEventListener('dragstart', function(event) {
         event.preventDefault();
     }
 });
+
+console.log("[CONNECTOR] star.init")

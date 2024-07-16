@@ -59,7 +59,7 @@
       <artifactId>application</artifactId>
       <version>2024.7-beta.1</version>
       <scope>system</scope>
-      <systemPath>B:\Workspaces\IntelliJ\Zyneon-Application\application-main\target\application-main-2024.7-beta.2.jar</systemPath>
+      <systemPath>/home/nerotvlive/Dokumente/Workspaces/IntelliJ/Zyneon-Application/application-main/target/application-main-2024.7-beta.2.jar</systemPath>
     </dependency>
   </dependencies>
   <properties>
