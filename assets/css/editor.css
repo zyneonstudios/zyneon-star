@@ -132,19 +132,27 @@ body {
         }
 
         .editor-preview {
-            background: white !important;
-            color: black !important;
+            font-family: OpenSans-Regular, sans-serif;
+            background: var(--background4) !important;
+            color: var(--foreground3) !important;
             border: none !important;
         }
 
         .editor-preview-active-side {
-            background: white !important;
-            color: black !important;
-            border: none !important;
+            font-family: OpenSans-Regular, sans-serif;
+            background: var(--background4) !important;
+            border: none;
+            border-left: 1px solid var(--menu);
+            border-bottom: 2px solid var(--menu);
+            color: var(--foreground3) !important;
         }
     }
 
     .md-editor:hover {
         box-shadow: 0 0 0.8rem black;
     }
+}
+
+strong {
+    font-family: OpenSans-Bold, sans-serif !important;
 }

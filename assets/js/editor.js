@@ -2,31 +2,12 @@ let id = generateUUIDv4();
 let back = "..";
 let editor;
 let fullscreen = false;
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.has("id")) {
+    id = urlParams.get("id");
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.has("id")) {
-        id = urlParams.get("id");
-    }
-    if(urlParams.has("back")) {
-        back = urlParams.get("back");
-        if(back==="reload") {
-            back = location.href;
-            if(back.includes("?")) {
-                back = back + "&id="+id;
-            } else {
-                back = back + "?id="+id;
-            }
-            const a = document.querySelector("#exit").querySelector("a");
-            a.innerHTML = "<i class='bx bx-refresh'></i>";
-            if(a.classList.contains("red")) {
-                a.classList.remove("red");
-            }
-            if(!a.classList.contains("blue")) {
-                a.classList.add("blue");
-            }
-        }
-    }
+function initEditor() {
     document.getElementById("md-editor").id = "editor_"+id;
     editor = new SimpleMDE(
         {
@@ -52,6 +33,43 @@ document.addEventListener('DOMContentLoaded', function() {
             spellChecker: false
         }
     );
+
+    let fullscreen = false;
+    if(urlParams.has("fullscreen")) {
+        if(urlParams.get("fullscreen")==="true") {
+            fullscreen = true;
+        }
+    }
+    if(localStorage.getItem("editor.fullscreen")!==null) {
+        if(localStorage.getItem("editor.fullscreen")==="true") {
+            fullscreen = true;
+        }
+    }
+    if(fullscreen) {
+        editor.toggleFullScreen();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if(urlParams.has("back")) {
+        back = urlParams.get("back");
+        if(back==="reload") {
+            back = location.href;
+            if(back.includes("?")) {
+                back = back + "&id="+id;
+            } else {
+                back = back + "?id="+id;
+            }
+            const a = document.querySelector("#exit").querySelector("a");
+            a.innerHTML = "<i class='bx bx-refresh'></i>";
+            if(a.classList.contains("red")) {
+                a.classList.remove("red");
+            }
+            if(!a.classList.contains("blue")) {
+                a.classList.add("blue");
+            }
+        }
+    }
 
     setInterval(function() {
         if(editor.isFullscreenActive()!==fullscreen) {
@@ -81,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     r.classList.remove("active");
                 }
             }
+            localStorage.setItem("editor.fullscreen",fullscreen)
         }
     }, 150);
 });

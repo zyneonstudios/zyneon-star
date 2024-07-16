@@ -52,6 +52,7 @@ body {
                 min-height: calc(var(--viewport-height) / 1.75);
                 height: 100%;
                 border: none;
+                border-radius: 0 !important;
             }
         }
 
@@ -60,4 +61,3 @@ body {
         }
     }
 }
-
