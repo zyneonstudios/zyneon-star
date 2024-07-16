@@ -56,7 +56,7 @@ public class StarConnector extends ModuleConnector {
                     dark = true;
                 }
             }
-            frame.openCustomPage("Star", "zyneon-star_start", "https://star.zyneonstudios.com?app=true&theme=" + dark);
+            frame.openCustomPage("Star", "zyneon-star_start", StarStorage.starUrlBase+"?app=true&theme=" + dark);
         } else if(request.equals("init")) {
             frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
         } else {
@@ -88,7 +88,7 @@ public class StarConnector extends ModuleConnector {
                         dark = true;
                     }
                 }
-                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://star.zyneonstudios.com/templates/editor.html?id=settings&back=reload&theme="+dark);
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&back=reload&theme="+dark);
             }
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");

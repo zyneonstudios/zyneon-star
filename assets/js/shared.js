@@ -21,7 +21,7 @@ function checkTheme() {
         setTheme(true);
         return;
     }
-    setTheme(false);
+    setTheme(true);
 }
 
 function setTheme(newTheme,save) {
