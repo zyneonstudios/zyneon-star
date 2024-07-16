@@ -1,6 +1,9 @@
 :root {
     --background: #0f0d20;
+    --background1: var(--background);
     --background2: #000000;
+    --background3: #1a1a32;
+    --background4: #111123;
     --foreground: #eaeaea;
     --foreground2: #c8c8c8;
     --foreground3: #ffffff;
@@ -11,4 +14,7 @@
     --card: #080815;
     --link: #ffffff;
     --link2: #9cabff;
+
+    --highlight: #ffffff;
+    --accent: #8732ec;
 }

@@ -1,0 +1,15 @@
+.create-article {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    iframe{
+        width: 79%;
+        height: 80%;
+        border: none;
+    }
+}

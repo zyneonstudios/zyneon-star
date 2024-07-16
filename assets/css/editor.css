@@ -1,0 +1,92 @@
+body {
+    color: var(--foreground) !important;
+    display: flex;
+    background: var(--background) !important;
+
+    * {
+        transition: all 0.25s ease !important;
+    }
+
+    .md-editor {
+        position: absolute;
+
+        width: calc(100% - 2rem);
+        height: calc(100% - 2rem);
+        max-width: calc(100% - 2rem);
+        max-height: calc(100% - 2rem);
+        box-shadow: 0 0 0.4rem var(--menu);
+
+        overflow-y: auto;
+        margin: 1rem;
+        border: 1px solid var(--background2);
+        border-radius: 1rem;
+
+        .CodeMirror {
+            cursor: text;
+            top: 3.025rem;
+            border: none;
+            height: calc(100% - 6.4rem);
+            border-radius: 0 !important;
+            background: var(--background3);
+            color: var(--foreground);
+            border-top: 1px solid var(--background2);
+            border-bottom: 1px solid var(--background2);
+        }
+
+        .editor-toolbar {
+            position: fixed !important;
+            opacity: 1 !important;
+            border: none;
+            background: var(--menu2);
+            width: calc(100% - 3rem - 4px);
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+
+            a.fa {
+                color: var(--foreground) !important;
+                border: none !important;
+            }
+
+            a.fa:hover {
+                background: var(--highlight);
+                color: var(--background) !important;
+                box-shadow: 0 0 0.4rem var(--highlight);
+                z-index: 1000;
+            }
+
+            a.fa.active {
+                background: var(--accent) !important;
+                color: white !important;
+                box-shadow: 0 0 0.4rem var(--accent);
+            }
+        }
+
+        .editor-toolbar.fullscreen {
+            position: absolute;
+            width: 100%;
+        }
+
+        .editor-statusbar {
+            position: absolute;
+            background: var(--menu);
+            width: calc(100% - 1rem - 4px);
+            bottom: 0;
+        }
+
+        .editor-preview {
+            background: white !important;
+            color: black !important;
+            border: none !important;
+        }
+
+        .editor-preview-active-side {
+            background: white !important;
+            color: black !important;
+            border: none !important;
+        }
+    }
+
+    .md-editor:hover {
+        box-shadow: 0 0 0.8rem black;
+    }
+}

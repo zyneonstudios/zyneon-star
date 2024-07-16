@@ -2,11 +2,13 @@
 <html lang="de">
     <head>
         <meta charset="UTF-8">
-        <title>Start ✪ Zyneon Star</title>
+        <title>Artikel erstellen ✪ Zyneon Star</title>
         <link rel="stylesheet" href="../assets/css/shared.css">
+        <link rel="stylesheet" href="../assets/css/create-article.css">
         <link rel="stylesheet" href="../assets/css/fonts.css">
         <link rel="stylesheet" id="css-colors">
         <script src="../assets/js/shared.js"></script>
+        <script src="../assets/js/create-article.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" sizes="16x16">
@@ -24,22 +26,25 @@
                 </div>
                 <div class="entries">
                     <div id="menu-entries" class="flex">
-                        <div class="entry flex danger" onclick="location.href = 'https://zyneonstudios.com/de/';">
-                            <i class='bx bxs-door-open'></i>
-                            <h3>Zurück</h3>
+                        <div class="entry flex" onclick="location.href = '..';">
+                            <i class='bx bxs-home'></i>
+                            <h3>Start</h3>
                         </div>
                     </div>
                 </div>
                 <i id="menu-toggle" class='bx bx-menu' onclick="toggleMenu();"></i>
             </div>
+            <div class="create-article">
+                <iframe src="../templates/editor.html"></iframe>
+            </div>
             <div id="footer">
-                <div class="copyright"><div class="tip" markdown="1">Have **fun!**</div>
-
-                    <p id="footer-text">
+                <div class="copyright">
+                    <p class="extra-bold-italic" id="footer-text">
                         <i class='bx bx-loader-circle bx-spin'></i> Loading footer...
                     </p>
                 </div>
             </div>
         </div>
     </body>
+
 </html>

@@ -218,7 +218,7 @@ body {
     #footer {
         position: absolute;
         width: calc(100% - 2rem);
-        bottom: -4.5rem;
+        bottom: -7.5rem;
         padding: 1rem;
         height: 6rem;
         color: #cfcfcf;
