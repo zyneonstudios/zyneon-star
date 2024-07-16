@@ -56,7 +56,7 @@ public class StarConnector extends ModuleConnector {
                     dark = true;
                 }
             }
-            frame.openCustomPage("Star", "zyneon-star_start", "https://zyneonstudios.github.io/zyneon-star/?app=true&theme=" + dark);
+            frame.openCustomPage("Star", "zyneon-star_start", "https://star.zyneonstudios.com?app=true&theme=" + dark);
         } else if(request.equals("init")) {
             frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
         } else {
@@ -66,9 +66,9 @@ public class StarConnector extends ModuleConnector {
 
     public void resolveInitRequest(String request) {
         if(request.equals("menu")) {
-            frame.executeJavaScript("addMenuEntry('zyneon-star','bx bx-star','Star','star.open');");
+            frame.executeJavaScript("if(!document.getElementById('zyneon-star')) {addMenuEntry('zyneon-star','bx bxs-star','Star','star.open');}");
         } else if(request.equals("settings")) {
-            frame.executeJavaScript("addGroup(\""+module.getName()+"\",\""+module.getId()+"\"); addModuleSetting('bx bx-star','Markdown Editor','star.tool.markdown-editor.open','star.markdownEditor',false,\""+module.getId()+"\");");
+            frame.executeJavaScript("addGroup(\"Tools\",\"tools\"); addModuleSetting('bx bxl-markdown','Markdown Editor (Star)','star.tool.markdown-editor.open','zyneon-star_tool-markdownEditor',false,\""+module.getId()+"\");");
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarInitRequest \""+request+"\"...");
         }
@@ -82,7 +82,13 @@ public class StarConnector extends ModuleConnector {
         if(request.startsWith("markdown-editor.")) {
             request = request.replaceFirst("markdown-editor.","");
             if(request.equals("open")) {
-                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://zyneonstudios.github.io/zyneon-star/templates/editor.html?back=reload&id=settings");
+                boolean dark = false;
+                if (ApplicationConfig.theme != null) {
+                    if (ApplicationConfig.theme.endsWith("-dark.css")) {
+                        dark = true;
+                    }
+                }
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://star.zyneonstudios.com/templates/editor.html?id=settings&back=reload&theme="+dark);
             }
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
