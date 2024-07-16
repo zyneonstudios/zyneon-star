@@ -74,6 +74,7 @@ function setArticleTitle(newTitle) {
 }
 
 function init() {
+    const urlParams = new URLSearchParams(window.location.search);
     fixLang();
 
     if(urlParams.has("author")) {

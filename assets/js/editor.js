@@ -1,3 +1,4 @@
+const urlParams = new URLSearchParams(window.location.search)
 let id = generateUUIDv4();
 let back = "..";
 let editor;

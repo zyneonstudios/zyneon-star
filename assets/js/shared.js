@@ -1,7 +1,7 @@
-const urlParams = new URLSearchParams(window.location.search);
 let lang;
 
 function checkTheme() {
+    const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.has("theme")) {
         setTheme(urlParams.get("theme"),true);
         return;
