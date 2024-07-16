@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             autofocus: true,
             autosave: {
                 enabled: true,
-                delay: 10000,
+                delay: 1000,
                 uniqueId: id+"",
             },
             blockStyles: {
