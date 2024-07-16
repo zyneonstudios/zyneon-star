@@ -1,10 +1,63 @@
 body {
     color: var(--foreground) !important;
     display: flex;
-    background: var(--background) !important;
+    background: none !important;
 
     * {
         transition: all 0.25s ease !important;
+    }
+
+    .cover {
+        position: fixed;
+        background: var(--background2);
+        height: 3.1rem;
+        width: 1.25rem;
+        z-index: 11;
+        display: none;
+    }
+
+    .cover.active {
+        display: block;
+    }
+
+    .cover#r {
+        right: 0;
+        top: 0;
+    }
+
+    .cover#l {
+        left: 0;
+        top: 0;
+    }
+
+    #exit {
+        position: absolute;
+        z-index: 1000;
+        right: 3.25rem;
+        top: 1.5rem;
+
+        a.button {
+            position: absolute;
+            font-family: OpenSans-Bold, sans-serif;
+            border-radius: 0.25rem 0.5rem 0.25rem 0.25rem;
+            padding: 0.25rem 0 0.25rem 0.5rem;
+            margin: 0;
+            min-width: 1.2rem;
+            min-height: 1.5rem;
+            font-size: 1rem;
+
+            i {
+                position: absolute;
+                font-size: 1.5rem;
+                left: 0.125rem;
+            }
+        }
+
+        a.button.active {
+            top: -1rem;
+            right: -2.75rem;
+            border-top-right-radius: 0.25rem;
+        }
     }
 
     .md-editor {
@@ -38,12 +91,16 @@ body {
             position: fixed !important;
             opacity: 1 !important;
             border: none;
+            padding-left: 1.4rem;
             background: var(--menu2);
-            width: calc(100% - 3rem - 4px);
+            width: calc(100% - 3.6rem - 4px);
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
+            box-shadow: 0 0.4rem 0.4rem #00000075;
+            z-index: 10;
 
             a.fa {
+                margin: 0 0.25rem;
                 color: var(--foreground) !important;
                 border: none !important;
             }

@@ -243,6 +243,32 @@ body {
     }
 }
 
+a:hover {
+    cursor: pointer;
+}
+
+.red {
+    background: #ff4747 !important;
+    color: white !important;
+}
+
+.red.hover:hover {
+    box-shadow: 0 0 0.4rem #ff0000;
+    background: #ff0000 !important;
+    color: white !important;
+}
+
+.blue {
+    background: dodgerblue !important;
+    color: white !important;
+}
+
+.blue.hover:hover {
+    box-shadow: 0 0 0.4rem #2323ff;
+    background: #2323ff !important;
+    color: white !important;
+}
+
 ::-webkit-scrollbar {
     width: 5px;
 }

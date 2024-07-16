@@ -34,12 +34,22 @@
                 </div>
                 <i id="menu-toggle" class='bx bx-menu' onclick="toggleMenu();"></i>
             </div>
-            <div class="create-article">
-                <iframe src="../templates/editor.html"></iframe>
+            <div class="cntcreate">
+                <div class="create-article">
+                    <div class="article-meta">
+                        <h2>Artikel Editor</h2>
+                        <h3>
+                            Name: <label>
+                                <input type="text" id="article-title" onchange="setTitle();">
+                            </label>
+                        </h3>
+                    </div>
+                    <iframe src="../templates/editor.html?back=reload"></iframe>
+                </div>
             </div>
             <div id="footer">
                 <div class="copyright">
-                    <p class="extra-bold-italic" id="footer-text">
+                    <p id="footer-text">
                         <i class='bx bx-loader-circle bx-spin'></i> Loading footer...
                     </p>
                 </div>
