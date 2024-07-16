@@ -247,6 +247,10 @@ a:hover {
     cursor: pointer;
 }
 
+.remove {
+    display: none !important;
+}
+
 .red {
     background: #ff4747 !important;
     color: white !important;

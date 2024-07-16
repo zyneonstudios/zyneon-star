@@ -1,5 +1,14 @@
 let lang;
 
+function isApp() {
+    if(localStorage.getItem("options.app")!=null) {
+        if(localStorage.getItem("options.app").toLowerCase()==="true") {
+            return true;
+        }
+    }
+    return false;
+}
+
 function checkTheme() {
     const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.has("theme")) {
@@ -113,6 +122,21 @@ function generateUUIDv4() {
     );
 }
 
+function checkApp() {
+    if(isApp()) {
+        remove(document.getElementById("leave-star"));
+        remove(document.getElementById("footer"));
+    }
+}
+
+function remove(element) {
+    if(element) {
+        if(!element.classList.contains("remove")) {
+            element.classList.add("remove");
+        }
+    }
+}
+
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkTheme);
 window.addEventListener('resize', checkWindowSize);
 
@@ -132,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    checkTheme(); setFooter();
+    checkApp(); checkTheme(); setFooter();
     mobile = isMobileDevice();
     checkWindowSize();
 });

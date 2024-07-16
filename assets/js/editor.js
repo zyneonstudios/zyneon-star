@@ -31,7 +31,8 @@ function initEditor() {
             ],
             indentWithTabs: true,
             tabSize: 4,
-            spellChecker: false
+            spellChecker: false,
+            promptUrls: true
         }
     );
 
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     setInterval(function() {
+        checkForLinks();
         if(editor.isFullscreenActive()!==fullscreen) {
             const a = document.getElementById("exit").querySelector("a");
             const r = document.getElementById("r");
@@ -102,5 +104,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             localStorage.setItem("editor.fullscreen",fullscreen)
         }
-    }, 150);
+    }, 250);
 });
+
+document.addEventListener("keydown", function(event) {
+    checkForLinks();
+});
+
+function checkForLinks() {
+    const links = document.getElementsByTagName("a");
+    for (let i = 0; i < links.length; i++) {
+        if(!links[i].href.startsWith("javascript:")) {
+            links[i].href = "javascript:editorRedirect('"+links[i].href+"');";
+        }
+    }
+}
+
+function editorRedirect(goal) {
+    if(isApp()) {
+        console.log("[CONNECTOR] star.browse."+goal)
+    } else {
+        window.open(goal, "_blank");
+    }
+}

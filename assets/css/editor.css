@@ -160,15 +160,43 @@ body {
             background: var(--background4) !important;
             color: var(--foreground3) !important;
             border: none !important;
+
+            a {
+                text-decoration: none !important;
+                color: var(--accent2) !important;
+            }
+
+            a:hover {
+                color: var(--accent) !important;
+                text-decoration: underline !important;
+            }
+
+            img {
+                max-width: 100% !important;
+            }
         }
 
-        .editor-preview-active-side {
+        .editor-preview-side {
             font-family: OpenSans-Regular, sans-serif;
             background: var(--background4) !important;
             border: none;
             border-left: 1px solid var(--menu);
             border-bottom: 2px solid var(--menu);
             color: var(--foreground3) !important;
+
+            a {
+                text-decoration: none !important;
+                color: var(--accent2) !important;
+            }
+
+            a:hover {
+                color: var(--accent) !important;
+                text-decoration: underline !important;
+            }
+
+            img {
+                max-width: 100% !important;
+            }
         }
     }
 
