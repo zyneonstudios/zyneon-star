@@ -25,7 +25,7 @@ public class StarConnector extends ModuleConnector {
                     dark = true;
                 }
             }
-            frame.openCustomPage("Star","zyneon-star","https://star.zyneonstudios.com?theme="+dark);
+            frame.openCustomPage("Star","zyneon-star","https://zyneonstudios.github.io/zyneon-star/?theme="+dark);
         } else if(request.equals("star.init")) {
             frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
         }
