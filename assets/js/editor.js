@@ -2,7 +2,7 @@ let id = generateUUIDv4();
 let back = "..";
 let editor;
 let fullscreen = false;
-const urlParams = new URLSearchParams(window.location.search);
+
 if(urlParams.has("id")) {
     id = urlParams.get("id");
 }

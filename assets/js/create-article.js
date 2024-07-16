@@ -2,7 +2,6 @@ let title = "";
 let id= "";
 
 document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
     if(urlParams.has("id")) {
         document.getElementById("article-title").value = urlParams.get("id");
     }

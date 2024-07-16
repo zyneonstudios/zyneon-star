@@ -1,20 +1,32 @@
+const urlParams = new URLSearchParams(window.location.search);
 let lang;
 
 function checkTheme() {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if(urlParams.has("theme")) {
+        setTheme(urlParams.get("theme"),true);
+        return;
+    } else if(localStorage.getItem("options.theme")!==null) {
+        setTheme(localStorage.getItem("options.theme"));
+        return;
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         setTheme(true);
         return;
     }
     setTheme(false);
 }
 
-function setTheme(newTheme) {
+function setTheme(newTheme,save) {
     if(newTheme==="dark"||newTheme==="true"||newTheme===true) {
         newTheme = "../assets/css/colors-dark.css";
     } else if(newTheme==="light"||newTheme==="false"||newTheme===false||newTheme===null||newTheme===undefined) {
         newTheme = "../assets/css/colors-light.css";
     }
     document.getElementById("css-colors").href = newTheme;
+    if(save) {
+        if(save===true) {
+            localStorage.setItem("options.theme",newTheme);
+        }
+    }
 }
 
 function toggleTheme() {
