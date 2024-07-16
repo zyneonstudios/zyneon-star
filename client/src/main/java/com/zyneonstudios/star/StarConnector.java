@@ -44,7 +44,7 @@ public class StarConnector extends ModuleConnector {
                     dark = true;
                 }
             }
-            frame.openCustomPage("Star", "zyneon-star", "https://zyneonstudios.github.io/zyneon-star/?app=true&theme=" + dark);
+            frame.openCustomPage("Star", "zyneon-star_start", "https://zyneonstudios.github.io/zyneon-star/?app=true&theme=" + dark);
         } else if(request.equals("init")) {
             frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
         } else {
@@ -56,7 +56,7 @@ public class StarConnector extends ModuleConnector {
         if(request.equals("menu")) {
             frame.executeJavaScript("addMenuEntry('zyneon-star','bx bx-star','Star','star.open');");
         } else if(request.equals("settings")) {
-            frame.executeJavaScript("addGroup(\""+module.getName()+"\",\""+module.getId()+"\"); addModuleSetting('bx bx-star','Markdown Editor','star.tools.markdown-editor','star.markdownEditor',false,\""+module.getId()+"\");");
+            frame.executeJavaScript("addGroup(\""+module.getName()+"\",\""+module.getId()+"\"); addModuleSetting('bx bx-star','Markdown Editor','star.tool.markdown-editor.open','star.markdownEditor',false,\""+module.getId()+"\");");
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarInitRequest \""+request+"\"...");
         }
@@ -67,6 +67,13 @@ public class StarConnector extends ModuleConnector {
     }
 
     public void resolveToolRequest(String request) {
-        NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
+        if(request.startsWith("markdown-editor.")) {
+            request = request.replaceFirst("markdown-editor.","");
+            if(request.equals("open")) {
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor","https://zyneonstudios.github.io/zyneon-star/templates/editor.html?back=reload&id=zyneon-star_tools-markdownEditor");
+            }
+        } else {
+            NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
+        }
     }
 }

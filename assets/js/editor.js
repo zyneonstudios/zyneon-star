@@ -114,8 +114,10 @@ document.addEventListener("keydown", function(event) {
 function checkForLinks() {
     const links = document.getElementsByTagName("a");
     for (let i = 0; i < links.length; i++) {
-        if(!links[i].href.startsWith("javascript:")) {
-            links[i].href = "javascript:editorRedirect('"+links[i].href+"');";
+        if(links[i].href) {
+            if(!links[i].href.startsWith("javascript:")) {
+                links[i].href = "javascript:editorRedirect('"+links[i].href+"');";
+            }
         }
     }
 }
