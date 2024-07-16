@@ -11,18 +11,23 @@
     <body style="background-color: var(--background);">
         <div id="cnttmp"></div>
         <script>
-            console.log("[CONNECTOR] star.init")
-            const urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.has("app")) {
-                if(urlParams.get("app")==="true") {
-                    localStorage.setItem("options.app","true");
+            function init() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if(urlParams.has("app")) {
+                    if(urlParams.get("app")==="true") {
+                        localStorage.setItem("options.app","true");
+                        console.log("[CONNECTOR] star.init");
+                        return;
+                    }
+                }
+                if(urlParams.has("_ijt")&&urlParams.has("_ij_reload")) {
+                    document.getElementById("cnttmp").innerHTML = "<a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; top: 0.25rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick='redirect();'>Continue</a><br><a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; top: 5rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick=\"redirect('de/');\">DE</a><br><a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; left: 4.75rem; top: 5rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick=\"redirect('en/');\">EN</a>"
+                } else {
+                    redirect();
                 }
             }
-            if(urlParams.has("_ijt")&&urlParams.has("_ij_reload")) {
-                document.getElementById("cnttmp").innerHTML = "<a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; top: 0.25rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick='redirect();'>Continue</a><br><a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; top: 5rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick=\"redirect('de/');\">DE</a><br><a style='color: white; background: dodgerblue; padding: 1rem; cursor: pointer; margin: 1rem; position: absolute; left: 4.75rem; top: 5rem; border-radius: 0.5rem; box-shadow: 0 0 0.8rem black;' onclick=\"redirect('en/');\">EN</a>"
-            } else {
-                redirect();
-            }
+
+            init();
 
             function redirect(goal) {
                 let urlParams = new URLSearchParams(window.location.search).toString();
