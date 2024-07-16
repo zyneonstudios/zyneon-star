@@ -93,7 +93,7 @@ body {
             border: none;
             padding-left: 1.4rem;
             background: var(--menu2);
-            width: calc(100% - 3.6rem - 4px);
+            width: calc(100% - 3.6rem - 6px);
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
             box-shadow: 0 0.4rem 0.4rem #00000075;
