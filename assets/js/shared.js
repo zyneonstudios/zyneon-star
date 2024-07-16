@@ -99,7 +99,6 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', che
 window.addEventListener('resize', checkWindowSize);
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("[CONNECTOR] star.init");
     if(location.pathname.includes("/de/")) {
         lang = "de";
     } else if(location.pathname.includes("/en/")) {
