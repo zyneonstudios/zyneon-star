@@ -23,9 +23,16 @@
         <dependency>
             <groupId>com.zyneonstudios.nexus</groupId>
             <artifactId>application</artifactId>
-            <version>2024.7.1-beta.2</version>
+            <version>2024.7.1-beta.3</version>
             <scope>system</scope>
-            <systemPath>/home/nerotvlive/Dokumente/Workspaces/IntelliJ/Zyneon-Application/application-main/target/application-main-2024.7.1-beta.2.jar</systemPath>
+            <systemPath>/home/nerotvlive/Dokumente/Workspaces/IntelliJ/Zyneon-Application/application-main/target/application-main-2024.7.1-beta.3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.zyneonstudios.nexus</groupId>
+            <artifactId>minecraft-module</artifactId>
+            <version>2024.7-beta.4</version>
+            <scope>system</scope>
+            <systemPath>/home/nerotvlive/Dokumente/Workspaces/IntelliJ/nexus-app-minecraft-module/target/minecraft-java-addon-2024.7-beta.4.jar</systemPath>
         </dependency>
     </dependencies>
 

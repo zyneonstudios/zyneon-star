@@ -3,14 +3,9 @@ package com.zyneonstudios.star;
 import com.zyneonstudios.application.frame.web.ApplicationFrame;
 import com.zyneonstudios.application.main.ApplicationConfig;
 import com.zyneonstudios.application.main.NexusApplication;
-import com.zyneonstudios.application.modules.ApplicationModule;
 import com.zyneonstudios.application.modules.ModuleConnector;
-
 import java.awt.*;
 import java.net.URI;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 public class StarConnector extends ModuleConnector {
 
@@ -57,6 +52,11 @@ public class StarConnector extends ModuleConnector {
             if (ApplicationConfig.theme != null) {
                 if (ApplicationConfig.theme.endsWith("-dark.css")) {
                     dark = true;
+                }
+            }
+            if(NexusApplication.getModuleLoader().getModuleIds().contains("nexus-minecraft-module")) {
+                if(com.zyneonstudios.star.integrations.MinecraftModuleIntegration.getIntegration()!=null) {
+                    com.zyneonstudios.star.integrations.MinecraftModuleIntegration.getIntegration().openStar();
                 }
             }
             frame.openCustomPage("Star", "zyneon-star_start", StarStorage.starUrlBase+"?app=true&theme=" + dark);
