@@ -10,7 +10,6 @@ if(urlParams.has("id")) {
 
 function initEditor() {
     document.getElementById("md-editor").id = "editor_"+id;
-    console.log("[LOG] "+id);
     editor = new SimpleMDE(
         {
             autoDownloadFontAwesome: true,
