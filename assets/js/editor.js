@@ -80,6 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if(isApp()) {
         replaceBack();
+        if(id==="settings") {
+            console.log("[CONNECTOR] star.init.editor")
+        }
     }
 
     setInterval(function() {

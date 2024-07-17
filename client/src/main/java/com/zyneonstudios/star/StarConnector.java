@@ -72,6 +72,8 @@ public class StarConnector extends ModuleConnector {
             frame.executeJavaScript("if(!document.getElementById('zyneon-star')) {addMenuEntry('zyneon-star','bx bxs-star','Star','star.open');}");
         } else if(request.equals("settings")) {
             frame.executeJavaScript("addGroup(\"Tools\",\"tools\"); addModuleSetting('bx bxl-markdown','Markdown Editor (Star)','star.tool.markdown-editor.open','zyneon-star_tool-markdownEditor',false,'tools');");
+        } else if(request.equals("editor")) {
+            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarInitRequest \""+request+"\"...");
         }
