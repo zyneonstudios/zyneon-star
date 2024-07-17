@@ -1,1 +1,3 @@
-console.log(location.href);
+if(location.href.includes("app=continue")) {
+    console.log("[CONNECTOR] star.sync")
+}
