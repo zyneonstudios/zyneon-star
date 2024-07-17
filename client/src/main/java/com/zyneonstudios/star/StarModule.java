@@ -45,8 +45,6 @@ public class StarModule extends ApplicationModule {
 
     public static void main(String[] args) {
         ArrayList<String> arguments = new ArrayList<>(Arrays.stream(args).toList());
-        arguments.add("--test");
-        arguments.add("--debug");
         arguments.add("--path:/home/nerotvlive/Dokumente/Workspaces/IntelliJ/Zyneon-Application/application-main/target/run/");
         arguments.add("--ui:file:///home/nerotvlive/Dokumente/Workspaces/IntelliJ/Zyneon-Application/application-ui/content/");
         //arguments.add("--ui:http://localhost:63342/index.html/application-ui/content/");

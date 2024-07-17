@@ -34,6 +34,8 @@ public class StarConnector extends ModuleConnector {
             resolveInitRequest(request.replaceFirst("init.",""));
         } else if(request.startsWith("sync.")) {
             resolveSyncRequest(request.replaceFirst("sync.",""));
+        } else if(request.startsWith("open.")) {
+            resolveOpenRequest(request.replaceFirst("open.",""));
         } else if(request.startsWith("tools.")) {
             resolveToolRequest(request.replaceFirst("tools.",""));
         } else if(request.startsWith("tool.")) {
@@ -62,8 +64,20 @@ public class StarConnector extends ModuleConnector {
             frame.openCustomPage("Star", "zyneon-star_start", StarStorage.starUrlBase+"?app=true&theme=" + dark);
         } else if(request.equals("init")) {
             frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted'); document.getElementById('iframe').src = '"+StarStorage.starUrlBase+"?app=continue"+"';");
+        } else if(request.equals("sync")) {
+            if(NexusApplication.getModuleLoader().getModuleIds().contains("nexus-minecraft-module")) {
+                if(com.zyneonstudios.star.integrations.MinecraftModuleIntegration.getIntegration()!=null) {
+                    com.zyneonstudios.star.integrations.MinecraftModuleIntegration.getIntegration().initStar();
+                }
+            }
         } else {
             NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarRequest \""+request+"\"...");
+        }
+    }
+
+    public void resolveOpenRequest(String request) {
+        if(request.equals("minecraft")) {
+            frame.getBrowser().loadURL(ApplicationConfig.urlBase+ApplicationConfig.language+"/library.html?moduleId=nexus-minecraft-module_java");
         }
     }
 

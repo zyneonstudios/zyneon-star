@@ -44,7 +44,7 @@ public class MinecraftModuleIntegration {
     public void initStar() {
         if(getMinecraft().getAuthenticator().isLoggedIn()) {
             String username = StarStorage.map.getString("minecraft.username");
-            ((ApplicationFrame)getMinecraft().getApplication().getFrame()).executeJavaScript("setMenuPanel(\"https://cravatar.eu/helmhead/" + username + "/64.png\",\"" + username + "\",\"Profile options\",true);");
+            ((ApplicationFrame)getMinecraft().getApplication().getFrame()).executeJavaScript("setMenuPanel(\"https://cravatar.eu/helmhead/" + username + "/64.png\",\"" + username + " <a onclick=\\\"\\\"><i class='bx bxs-cog'></i></a>\",\"Logged in via <a href=\\\"javascript:connector('star.open.minecraft');\\\" class='bold'>Minecraft</a>\",true);");
         }
     }
 }
