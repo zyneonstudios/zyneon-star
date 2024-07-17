@@ -71,18 +71,18 @@ function replaceBack() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-    if(urlParams.get("back")!=null) {
-        back = urlParams.get("back");
-        if(back==="reload") {
-            replaceBack();
-        }
-    }
     if(isApp()) {
         replaceBack();
         if(id==="settings") {
             console.log("[CONNECTOR] star.init.editor")
         }
+    } else if(urlParams.get("back")!==null) {
+        back = urlParams.get("back");
+        if(back==="reload") {
+            replaceBack();
+        }
     }
+
 
     setInterval(function() {
         checkForLinks();
