@@ -75,6 +75,7 @@ body {
         border-radius: 1rem;
 
         .CodeMirror {
+            transition: all 0ms !important;
             font-family: OpenSans-Regular, sans-serif;
             cursor: text;
             top: 3.025rem;

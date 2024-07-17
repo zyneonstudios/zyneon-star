@@ -63,7 +63,7 @@ public class StarConnector extends ModuleConnector {
             }
             frame.openCustomPage("Star", "zyneon-star_start", StarStorage.starUrlBase+"?app=true&theme=" + dark);
         } else if(request.equals("init")) {
-            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted'); document.getElementById('iframe').src = '"+StarStorage.starUrlBase+"?app=continue"+"';");
+            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted'); document.getElementById('zyneon-star').onclick = null; document.getElementById('iframe').src = '"+StarStorage.starUrlBase+"?app=continue"+"';");
         } else if(request.equals("sync")) {
             if(NexusApplication.getModuleLoader().getModuleIds().contains("nexus-minecraft-module")) {
                 if(com.zyneonstudios.star.integrations.MinecraftModuleIntegration.getIntegration()!=null) {
