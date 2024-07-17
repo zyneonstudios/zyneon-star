@@ -93,7 +93,7 @@ public class StarConnector extends ModuleConnector {
                         dark = true;
                     }
                 }
-                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&theme="+dark);
+                frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&theme="+dark+"&back=reload");
                 System.out.println(URLEncoder.encode("id=settings&back=reload", StandardCharsets.UTF_8));
             }
         } else {
