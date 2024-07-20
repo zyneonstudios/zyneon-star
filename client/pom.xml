@@ -11,7 +11,7 @@
 
     <artifactId>star-client</artifactId>
     <name>Zyneon Star Client</name>
-    <version>2024.7-beta.5</version>
+    <version>2024.7-beta.6</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
