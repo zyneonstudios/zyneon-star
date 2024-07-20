@@ -3,6 +3,7 @@ package com.zyneonstudios.star.integrations;
 import com.zyneonstudios.application.MinecraftJavaAddon;
 import com.zyneonstudios.application.frame.web.ApplicationFrame;
 import com.zyneonstudios.application.main.NexusApplication;
+import com.zyneonstudios.application.minecraft.java.JavaStorage;
 import com.zyneonstudios.star.StarStorage;
 import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
 
@@ -30,20 +31,12 @@ public class MinecraftModuleIntegration {
     }
 
     public void openStar() {
-        if(getMinecraft().getAuthenticator().isLoggedIn()) {
-            AuthInfos authInfos = getMinecraft().getAuthenticator().getAuthInfos();
-            StarStorage.map.set("minecraft.username",authInfos.getUsername());
-            StarStorage.map.set("minecraft.uuid",authInfos.getUuid());
-        } else {
-            StarStorage.map.delete("minecraft.username");
-            StarStorage.map.delete("minecraft.uuid");
-        }
-        NexusApplication.getLogger().log("[STAR] (Minecraft Module Integration) Logged in as "+StarStorage.map.get("minecraft.username")+" ("+StarStorage.map.get("minecraft.uuid")+")...");
+        NexusApplication.getLogger().log("[STAR] (Minecraft Module Integration) Logged in as "+JavaStorage.map.get("auth.username")+" ("+JavaStorage.map.get("auth.uuid")+")...");
     }
 
     public void initStar() {
-        if(getMinecraft().getAuthenticator().isLoggedIn()) {
-            String username = StarStorage.map.getString("minecraft.username");
+        if(getMinecraft().getAuthState()==MinecraftJavaAddon.AuthState.LOGGED_IN) {
+            String username = JavaStorage.map.getString("auth.username");
             ((ApplicationFrame)getMinecraft().getApplication().getFrame()).executeJavaScript("setMenuPanel(\"https://cravatar.eu/helmhead/" + username + "/64.png\",\"" + username + " <a onclick=\\\"\\\"><i class='bx bxs-cog'></i></a>\",\"Logged in via <a href=\\\"javascript:connector('star.open.minecraft');\\\" class='bold'>Minecraft</a>\",true);");
         }
     }
