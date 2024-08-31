@@ -1,7 +1,7 @@
 package com.zyneonstudios.star;
 
 import com.zyneonstudios.application.frame.web.ApplicationFrame;
-import com.zyneonstudios.application.main.ApplicationConfig;
+import com.zyneonstudios.application.main.ApplicationStorage;
 import com.zyneonstudios.application.main.NexusApplication;
 import com.zyneonstudios.application.modules.ModuleConnector;
 import java.awt.*;
@@ -46,13 +46,13 @@ public class StarConnector extends ModuleConnector {
                 try {
                     Desktop.getDesktop().browse(new URI(request));
                 } catch (Exception e) {
-                    NexusApplication.getLogger().error("[STAR] (Connector) Couldn't open url \""+request+"\" in default browser: "+e.getMessage());
+                    NexusApplication.getLogger().err("[STAR] (Connector) Couldn't open url \""+request+"\" in default browser: "+e.getMessage());
                 }
             }
         } else if(request.equals("open")) {
             boolean dark = false;
-            if (ApplicationConfig.theme != null) {
-                if (ApplicationConfig.theme.endsWith("-dark.css")) {
+            if (ApplicationStorage.theme != null) {
+                if (ApplicationStorage.theme.endsWith("-dark.css")) {
                     dark = true;
                 }
             }
@@ -71,30 +71,32 @@ public class StarConnector extends ModuleConnector {
                 }
             }
         } else {
-            NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarRequest \""+request+"\"...");
+            NexusApplication.getLogger().err("[STAR] (CONNECTOR) Couldn't resolve StarRequest \""+request+"\"...");
         }
     }
 
     public void resolveOpenRequest(String request) {
         if(request.equals("minecraft")) {
-            frame.getBrowser().loadURL(ApplicationConfig.urlBase+ApplicationConfig.language+"/library.html?moduleId=nexus-minecraft-module_java");
+            frame.getBrowser().loadURL(ApplicationStorage.urlBase+ApplicationStorage.language+"/library.html?moduleId=nexus-minecraft-module_java");
         }
     }
 
     public void resolveInitRequest(String request) {
-        if(request.equals("menu")) {
-            frame.executeJavaScript("if(!document.getElementById('zyneon-star')) {addMenuEntry('zyneon-star','bx bxs-star','Star','star.open');}");
-        } else if(request.equals("settings")) {
-            frame.executeJavaScript("addGroup(\"Tools\",\"tools\"); addModuleSetting('bx bxl-markdown','Markdown Editor (Star)','star.tool.markdown-editor.open','zyneon-star_tool-markdownEditor',false,'tools');");
-        } else if(request.equals("editor")) {
-            frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
-        } else {
-            NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarInitRequest \""+request+"\"...");
+        switch (request) {
+            case "menu" -> {
+                //frame.executeJavaScript("if(!document.getElementById('zyneon-star')) {addMenuEntry('zyneon-star','bx bxs-star','Star','star.open');}");
+            }
+            case "settings" ->
+                    frame.executeJavaScript("addGroup(\"Tools\",\"tools\"); addModuleSetting('bx bxl-markdown','Markdown Editor','star.tool.markdown-editor.open','zyneon-star_tool-markdownEditor',false,'tools');");
+            case "editor" ->
+                    frame.executeJavaScript("document.getElementById('zyneon-star').classList.add('highlighted');");
+            default ->
+                    NexusApplication.getLogger().err("[STAR] (CONNECTOR) Couldn't resolve StarInitRequest \"" + request + "\"...");
         }
     }
 
     public void resolveSyncRequest(String request) {
-        NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarSyncRequest \""+request+"\"...");
+        NexusApplication.getLogger().err("[STAR] (CONNECTOR) Couldn't resolve StarSyncRequest \""+request+"\"...");
     }
 
     public void resolveToolRequest(String request) {
@@ -102,15 +104,15 @@ public class StarConnector extends ModuleConnector {
             request = request.replaceFirst("markdown-editor.","");
             if(request.equals("open")) {
                 boolean dark = false;
-                if (ApplicationConfig.theme != null) {
-                    if (ApplicationConfig.theme.endsWith("-dark.css")) {
+                if (ApplicationStorage.theme != null) {
+                    if (ApplicationStorage.theme.endsWith("-dark.css")) {
                         dark = true;
                     }
                 }
                 frame.openCustomPage("Markdown-Editor","zyneon-star_markdown-editor",StarStorage.starUrlBase+"templates/editor.html?id=settings&theme="+dark+"&back=reload");
             }
         } else {
-            NexusApplication.getLogger().error("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
+            NexusApplication.getLogger().err("[STAR] (CONNECTOR) Couldn't resolve StarToolRequest \""+request+"\"...");
         }
     }
 }
